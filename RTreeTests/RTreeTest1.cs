@@ -7,7 +7,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace RTree.Test
 {
 	[TestClass]
-	public class RTreeTests
+	public class RTreeTest1
 	{
 		private class Point : ISpatialData, IComparable<Point>
 		{
