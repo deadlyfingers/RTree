@@ -28,7 +28,13 @@ namespace RTree
 
 			public List<ISpatialData> Children { get; set; }
 			public int Height { get; set; }
-			public bool IsLeaf => Height == 1;
+			public bool IsLeaf
+            {
+                get
+                {
+                    return Height == 1;
+                }
+            }
 			public Envelope Envelope { get; set; }
 		}
 	}

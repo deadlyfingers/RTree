@@ -35,7 +35,9 @@ namespace RTree
 			this.Count = 0;
 		}
 
-		public IEnumerable<T> Search() => GetAllChildren(this.root).ToList();
+        public IEnumerable<T> Search() {
+            return GetAllChildren(this.root).ToList();
+        }
 
 		public IEnumerable<T> Search(Envelope boundingBox)
 		{

@@ -88,9 +88,11 @@ namespace RTree
 			}
 		}
 
-		#region SplitNode
-		private void SplitRoot(Node newNode) =>
-			this.root = new Node(new List<ISpatialData> { this.root, newNode }, this.root.Height + 1);
+        #region SplitNode
+        private void SplitRoot(Node newNode)
+        {
+            this.root = new Node(new List<ISpatialData> { this.root, newNode }, this.root.Height + 1);
+        }
 
 		private Node SplitNode(Node node)
 		{
@@ -114,9 +116,10 @@ namespace RTree
 				node.Children.Sort(CompareMinX);
 		}
 
-		private double GetPotentialSplitMargins(List<ISpatialData> children) =>
-			GetPotentialEnclosingMargins(children) +
-			GetPotentialEnclosingMargins(children.AsEnumerable().Reverse().ToList());
+        private double GetPotentialSplitMargins(List<ISpatialData> children) {
+            return GetPotentialEnclosingMargins(children) +
+            GetPotentialEnclosingMargins(children.AsEnumerable().Reverse().ToList());
+        }
 
 		private double GetPotentialEnclosingMargins(List<ISpatialData> children)
 		{
@@ -164,8 +167,10 @@ namespace RTree
 			return BuildNodes(data, 0, data.Count - 1, treeHeight, rootMaxEntries);
 		}
 
-		private int GetDepth(int numNodes) =>
-			(int)Math.Ceiling(Math.Log(numNodes) / Math.Log(this.maxEntries));
+        private int GetDepth(int numNodes)
+        {
+            return (int)Math.Ceiling(Math.Log(numNodes) / Math.Log(this.maxEntries));
+        }
 
 		private Node BuildNodes(List<ISpatialData> data, int left, int right, int height, int maxEntries)
 		{

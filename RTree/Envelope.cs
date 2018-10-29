@@ -44,8 +44,22 @@ namespace RTree
 		}
 
 
-		public double Area => Math.Max(this.MaxX - this.MinX, 0) * Math.Max(this.MaxY - this.MinY, 0);
-		public double Margin => Math.Max(this.MaxX - this.MinX, 0) + Math.Max(this.MaxY - this.MinY, 0);
+        // NB: Feature `expression bodied members' cannot be used because it is not part of the C# 4.0 language specification
+        public double Area
+        {
+            get
+            {
+                return Math.Max(this.MaxX - this.MinX, 0) * Math.Max(this.MaxY - this.MinY, 0);
+            }
+        }
+
+		public double Margin
+        {
+            get
+            {
+                return Math.Max(this.MaxX - this.MinX, 0) + Math.Max(this.MaxY - this.MinY, 0);
+            }
+        }
 
 		public Envelope() { }
 		public Envelope(double minX, double minY, double maxX, double maxY)
@@ -119,23 +133,35 @@ namespace RTree
 				this.MaxY >= other.MinY;
 		}
 
-		public static Envelope InfiniteBounds =>
-			new Envelope
-			{
-				MinX = double.NegativeInfinity,
-				MinY = double.NegativeInfinity,
-				MaxX = double.PositiveInfinity,
-				MaxY = double.PositiveInfinity,
-			};
+		public static Envelope InfiniteBounds
+        {
+            get
+            {
+                return new Envelope
+                {
+                    MinX = double.NegativeInfinity,
+                    MinY = double.NegativeInfinity,
+                    MaxX = double.PositiveInfinity,
+                    MaxY = double.PositiveInfinity,
+                };
+            }
+        }
+		
 
-		public static Envelope EmptyBounds =>
-			new Envelope
-			{
-				MinX = double.PositiveInfinity,
-				MinY = double.PositiveInfinity,
-				MaxX = double.NegativeInfinity,
-				MaxY = double.NegativeInfinity,
-			};
+		public static Envelope EmptyBounds
+        {
+            get
+            {
+                return new Envelope
+                {
+                    MinX = double.PositiveInfinity,
+                    MinY = double.PositiveInfinity,
+                    MaxX = double.NegativeInfinity,
+                    MaxY = double.NegativeInfinity,
+                };
+            }
+        }
+			
 
 		public static double Distance(Envelope a, Envelope b)
 		{
