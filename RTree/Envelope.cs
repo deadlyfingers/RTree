@@ -172,7 +172,7 @@ namespace RTree
 
 		public override string ToString()
 		{
-			return String.Format("Envelope: MinX={0}, MinY={2}, MaxX{2}, MaxY{3}", MinX, MinY, MaxX, MaxY);
+			return String.Format("Envelope: MinX={0}, MinY={1}, MaxX{2}, MaxY{3}", MinX, MinY, MaxX, MaxY);
 		}
 	}
 }
